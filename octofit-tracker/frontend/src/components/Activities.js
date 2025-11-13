@@ -29,34 +29,54 @@ const Activities = () => {
   const columns = activities.length ? Object.keys(activities[0]) : [];
 
   return (
-    <div className="card shadow mb-4">
-      <div className="card-header bg-primary text-white">
-        <h2 className="h4 mb-0">Actividades</h2>
-      </div>
-      <div className="card-body">
-        <div className="table-responsive">
-          <table className="table table-striped table-hover align-middle">
-            <thead className="table-light">
-              <tr>
-                {columns.map(col => (
-                  <th key={col}>{col}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {activities.map((a, i) => (
-                <tr key={a.id || i}>
+    <>
+      <div className="card shadow mb-4">
+        <div className="card-header bg-primary text-white">
+          <h2 className="h4 mb-0">Actividades</h2>
+        </div>
+        <div className="card-body">
+          <div className="table-responsive">
+            <table className="table table-striped table-hover align-middle">
+              <thead className="table-light">
+                <tr>
                   {columns.map(col => (
-                    <td key={col}>{typeof a[col] === 'object' ? JSON.stringify(a[col]) : a[col]}</td>
+                    <th key={col}>{col}</th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {activities.map((a, i) => (
+                  <tr key={a.id || i}>
+                    {columns.map(col => (
+                      <td key={col}>{typeof a[col] === 'object' ? JSON.stringify(a[col]) : a[col]}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <button className="btn btn-primary mt-3" onClick={() => window.location.reload()}>Refrescar</button>
         </div>
-        <button className="btn btn-primary mt-3" onClick={() => window.location.reload()}>Refrescar</button>
       </div>
-    </div>
+
+      {/* Cards de actividades */}
+      <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+        {activities.slice(0, 6).map((a, i) => (
+          <div className="col" key={a.id || i}>
+            <div className="card h-100 border-primary shadow-sm">
+              <div className="card-body">
+                <h5 className="card-title text-primary">Actividad #{a.id || i+1}</h5>
+                <ul className="list-unstyled mb-2">
+                  {Object.entries(a).map(([k, v]) => (
+                    <li key={k}><strong>{k}:</strong> {typeof v === 'object' ? JSON.stringify(v) : v}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 

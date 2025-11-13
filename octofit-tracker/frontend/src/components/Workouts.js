@@ -28,34 +28,54 @@ const Workouts = () => {
   const columns = workouts.length ? Object.keys(workouts[0]) : [];
 
   return (
-    <div className="card shadow mb-4">
-      <div className="card-header bg-warning text-dark">
-        <h2 className="h4 mb-0">Entrenamientos</h2>
-      </div>
-      <div className="card-body">
-        <div className="table-responsive">
-          <table className="table table-striped table-hover align-middle">
-            <thead className="table-light">
-              <tr>
-                {columns.map(col => (
-                  <th key={col}>{col}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {workouts.map((w, i) => (
-                <tr key={w.id || i}>
+    <>
+      <div className="card shadow mb-4">
+        <div className="card-header bg-warning text-dark">
+          <h2 className="h4 mb-0">Entrenamientos</h2>
+        </div>
+        <div className="card-body">
+          <div className="table-responsive">
+            <table className="table table-striped table-hover align-middle">
+              <thead className="table-light">
+                <tr>
                   {columns.map(col => (
-                    <td key={col}>{typeof w[col] === 'object' ? JSON.stringify(w[col]) : w[col]}</td>
+                    <th key={col}>{col}</th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {workouts.map((w, i) => (
+                  <tr key={w.id || i}>
+                    {columns.map(col => (
+                      <td key={col}>{typeof w[col] === 'object' ? JSON.stringify(w[col]) : w[col]}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <button className="btn btn-warning mt-3 text-dark" onClick={() => window.location.reload()}>Refrescar</button>
         </div>
-        <button className="btn btn-warning mt-3 text-dark" onClick={() => window.location.reload()}>Refrescar</button>
       </div>
-    </div>
+
+      {/* Cards de entrenamientos */}
+      <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+        {workouts.slice(0, 6).map((w, i) => (
+          <div className="col" key={w.id || i}>
+            <div className="card h-100 border-warning shadow-sm">
+              <div className="card-body">
+                <h5 className="card-title text-warning">Entrenamiento #{w.id || i+1}</h5>
+                <ul className="list-unstyled mb-2">
+                  {Object.entries(w).map(([k, v]) => (
+                    <li key={k}><strong>{k}:</strong> {typeof v === 'object' ? JSON.stringify(v) : v}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
