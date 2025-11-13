@@ -1,0 +1,128 @@
+
+html, body, #root, .App {
+  height: 100%;
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+}
+
+.App {
+  min-height: 100vh;
+  color: #22223b;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+/* Logo alineado a la izquierda en la navbar */
+.octofit-logo {
+  height: 48px;
+  margin-right: 16px;
+  vertical-align: middle;
+}
+
+/* Navbar personalizada */
+.navbar {
+  background: linear-gradient(90deg, #3a86ff 0%, #8338ec 100%) !important;
+  box-shadow: 0 2px 8px rgba(58,134,255,0.08);
+}
+.navbar .navbar-brand, .navbar .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.navbar .nav-link.active, .navbar .nav-link:focus, .navbar .nav-link:hover {
+  color: #ffbe0b !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #3a86ff;
+  font-weight: 700;
+}
+
+/* Tablas Bootstrap personalizadas */
+.table {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(58,134,255,0.06);
+}
+.table thead {
+  background: #3a86ff;
+  color: #fff;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f1f3f8;
+}
+.table-hover tbody tr:hover {
+  background-color: #e0eafc;
+}
+
+/* Botones Bootstrap personalizados */
+.btn-primary, .btn-success, .btn-info, .btn-secondary, .btn-warning {
+  border: none;
+  border-radius: 24px;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  transition: background 0.2s;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #3a86ff 0%, #8338ec 100%);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, #4361ee 0%, #7209b7 100%);
+}
+.btn-success {
+  background: #06d6a0;
+  color: #fff;
+}
+.btn-success:hover {
+  background: #1b9aaa;
+}
+.btn-info {
+  background: #00b4d8;
+  color: #fff;
+}
+.btn-info:hover {
+  background: #0077b6;
+}
+.btn-secondary {
+  background: #adb5bd;
+  color: #22223b;
+}
+.btn-secondary:hover {
+  background: #495057;
+  color: #fff;
+}
+.btn-warning {
+  background: #ffbe0b;
+  color: #22223b;
+}
+.btn-warning:hover {
+  background: #faa307;
+  color: #fff;
+}
+
+/* Links */
+a, .App-link {
+  color: #3a86ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover, .App-link:hover {
+  color: #ffbe0b;
+}
+
+/* Card */
+.card {
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(58,134,255,0.08);
+  border: none;
+}
+.card-header {
+  border-radius: 16px 16px 0 0;
+}
+.card-body {
+  background: #f8f9fa;
+}
+
+/* Favicon (opcional, ya que React usa favicon.ico por defecto) */
+/* Puedes personalizar el favicon.ico en public/ para un look único */
